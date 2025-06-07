@@ -1,0 +1,15 @@
+package com.example.backend;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@RestControllerAdvice
+public class ItemNotFoundAdvice {
+    @ExceptionHandler(ItemNotFoundException.class)
+    @ResponseStatus(HttpStatus.OK)
+    ErrorPayload itemNotFoundHandler(ItemNotFoundException ex) {
+        return new ErrorPayload(ex.getMessage());
+    }
+}
