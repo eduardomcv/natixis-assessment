@@ -4,8 +4,8 @@ import java.util.HashMap;
 
 import org.springframework.stereotype.Service;
 
-import com.example.backend.Item;
 import com.example.backend.ItemNotFoundException;
+import com.example.backend.models.Item;
 
 @Service
 public class StoreService {
@@ -19,11 +19,11 @@ public class StoreService {
         this.idCounter = 0;
 
         // Initialize the store with some items
-        this.createItem(new Item("Apple", 0.50));
-        this.createItem(new Item("Banana", 0.30));
-        this.createItem(new Item("Orange", 0.60));
-        this.createItem(new Item("Grapes", 2.00));
-        this.createItem(new Item("Watermelon", 3.00));
+        this.createItem(new Item("Apple", "0.50"));
+        this.createItem(new Item("Banana", "0.30"));
+        this.createItem(new Item("Orange", "0.80"));
+        this.createItem(new Item("Grapes", "1.20"));
+        this.createItem(new Item("Watermelon", "2.50"));
     }
 
     public HashMap<Integer, Item> getStore() {
