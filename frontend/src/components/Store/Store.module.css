@@ -1,0 +1,14 @@
+.itemList {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-auto-rows: minmax(200px, auto);
+	border: 2px solid grey;
+	border-radius: 5px;
+}
+
+.item {
+	border: 2px solid grey;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
