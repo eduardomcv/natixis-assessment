@@ -41,7 +41,7 @@ public class Store extends HashMap<Integer, Item> {
         return this.put(id, item);
     }
 
-    public Item removeItem(int id) {
+    public Item deleteItem(int id) {
         return this.remove(id);
     }
 }
