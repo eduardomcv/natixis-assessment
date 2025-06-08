@@ -1,15 +1,17 @@
 package com.example.backend;
 
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 public class StoreController {
     private final Store store;
 
     public StoreController() {
-        // The store is just a simple in-memory hashmap
         this.store = new Store();
     }
 
@@ -23,14 +25,18 @@ public class StoreController {
         return store;
     }
 
+    @PostMapping("/item")
+    public Item createItem(@RequestBody Item item) {
+        return store.createItem(item);
+    }
+
     @GetMapping("/item/{id}")
     public Item getItem(@PathVariable int id) {
-        Item item = store.get(id);
+        return store.getItem(id);
+    }
 
-        if (item == null) {
-            throw new ItemNotFoundException(id);
-        }
-
-        return item;
+    @DeleteMapping("item/{id}")
+    public Item putMethodName(@PathVariable int id, @RequestBody Item item) {
+        return store.removeItem(id);
     }
 }
