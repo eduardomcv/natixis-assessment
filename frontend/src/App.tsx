@@ -1,8 +1,10 @@
-import './App.css'
+import { Store } from "./components/Store";
 
 export function App() {
-  return (
-    <div>App</div>
-  )
+	return (
+		<>
+			<h1>Welcome to the Store</h1>
+			<Store />
+		</>
+	);
 }
-
