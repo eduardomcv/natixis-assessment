@@ -2,11 +2,12 @@ package com.example.backend.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.backend.Item;
+import com.example.backend.models.Item;
 import com.example.backend.services.StoreService;
 
 import java.util.HashMap;
 
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,7 +34,7 @@ public class StoreController {
     }
 
     @PostMapping("/item")
-    public Item createItem(@RequestBody Item item) {
+    public Item createItem(@RequestBody @Validated Item item) {
         return service.createItem(item);
     }
 
@@ -43,7 +44,7 @@ public class StoreController {
     }
 
     @PutMapping("item/{id}")
-    public Item updateItem(@PathVariable int id, @RequestBody Item item) {
+    public Item updateItem(@PathVariable int id, @RequestBody @Validated Item item) {
         return service.updateItem(id, item);
     }
 
