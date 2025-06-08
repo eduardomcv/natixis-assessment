@@ -1,6 +1,12 @@
-package com.example.backend;
+package com.example.backend.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.backend.Item;
+import com.example.backend.services.StoreService;
+
+import java.util.HashMap;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,39 +16,39 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 public class StoreController {
-    private final Store store;
+    private final StoreService service;
 
     public StoreController() {
-        this.store = new Store();
+        this.service = new StoreService();
     }
 
     @GetMapping("/health-check")
     public String getHealthCheck() {
-        return "Store is up and running!";
+        return service.getHealthCheck();
     }
 
     @GetMapping("/store")
-    public Store getStore() {
-        return store;
+    public HashMap<Integer, Item> getService() {
+        return service.getStore();
     }
 
     @PostMapping("/item")
     public Item createItem(@RequestBody Item item) {
-        return store.createItem(item);
+        return service.createItem(item);
     }
 
     @GetMapping("/item/{id}")
     public Item getItem(@PathVariable int id) {
-        return store.getItem(id);
+        return service.getItem(id);
     }
 
     @PutMapping("item/{id}")
     public Item updateItem(@PathVariable int id, @RequestBody Item item) {
-        return store.updateItem(id, item);
+        return service.updateItem(id, item);
     }
 
     @DeleteMapping("item/{id}")
     public Item deleteItem(@PathVariable int id) {
-        return store.deleteItem(id);
+        return service.deleteItem(id);
     }
 }
