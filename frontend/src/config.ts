@@ -15,5 +15,11 @@ export const urls = {
 		item(id: string) {
 			return `${API_BASE_URL}/item/${id}`;
 		},
+		login() {
+			return `${API_BASE_URL}/login`;
+		},
+		register() {
+			return `${API_BASE_URL}/register`;
+		},
 	},
 };
