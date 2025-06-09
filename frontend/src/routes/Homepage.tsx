@@ -1,6 +1,6 @@
-import { Store } from "./components/Store";
+import { Store } from "../components/Store";
 
-export function App() {
+export function Homepage() {
 	return (
 		<>
 			<h1>Welcome to the fruits store!</h1>
