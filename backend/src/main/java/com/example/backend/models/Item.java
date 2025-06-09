@@ -10,17 +10,22 @@ public class Item {
     @NonNull
     private String price;
 
+    @NonNull
+    private String currency;
+
     private String imageName;
 
-    public Item(String name, String price) {
+    public Item(String name, String price, String currency) {
         this.name = name;
         this.price = price;
+        this.currency = currency;
         this.imageName = null; // Default to null if no image is provided
     }
 
-    public Item(String name, String price, String imageName) {
+    public Item(String name, String price, String currency, String imageName) {
         this.name = name;
         this.price = price;
+        this.currency = currency;
         this.imageName = imageName;
     }
 
@@ -30,6 +35,10 @@ public class Item {
 
     public String getPrice() {
         return this.price;
+    }
+
+    public String getCurrency() {
+        return this.currency;
     }
 
     public String getImageURL() {

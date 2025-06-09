@@ -19,11 +19,11 @@ public class StoreService {
         this.idCounter = 0;
 
         // Initialize the store with some items
-        this.createItem(new Item("Apple", "0.50", "apple.jpg"));
-        this.createItem(new Item("Banana", "0.30", "banana.jpg"));
-        this.createItem(new Item("Orange", "0.80", "orange.jpg"));
-        this.createItem(new Item("Grapes", "1.20", "grapes.jpg"));
-        this.createItem(new Item("Watermelon", "2.50", "watermelon.jpg"));
+        this.createItem(new Item("Apple", "0.50", "EUR", "apple.jpg"));
+        this.createItem(new Item("Banana", "0.30", "EUR", "banana.jpg"));
+        this.createItem(new Item("Orange", "0.80", "EUR", "orange.jpg"));
+        this.createItem(new Item("Grapes", "1.20", "EUR", "grapes.jpg"));
+        this.createItem(new Item("Watermelon", "2.50", "EUR", "watermelon.jpg"));
     }
 
     public HashMap<Integer, Item> getStore() {
