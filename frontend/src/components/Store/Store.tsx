@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useFetch } from "../../hooks/useFetch";
 import classes from "./Store.module.css";
+import { Link } from "react-router";
 
 export type ID = string;
 
@@ -42,13 +43,17 @@ export function Store() {
 
 				return (
 					<li key={id} className={classes.item}>
-						<img
-							src={item.imageURL ?? ""}
-							alt={item.name}
-							className={classes.itemImage}
-						/>
-						<span className={classes.itemName}>{item.name}</span>
-						<span className={classes.itemPrice}>
+						<Link to={`/item/${id}`} className={classes.itemLink}>
+							<img
+								src={item.imageURL ?? ""}
+								alt={item.name}
+								className={classes.itemImage}
+							/>
+						</Link>
+						<Link to={`/item/${id}`} className={classes.itemName}>
+							{item.name}
+						</Link>
+						<Link to={`/item/${id}`} className={classes.itemPrice}>
 							{currencyFormatter
 								.formatToParts(Number(item.price))
 								.map((part) => {
@@ -72,7 +77,7 @@ export function Store() {
 										</span>
 									);
 								})}
-						</span>
+						</Link>
 					</li>
 				);
 			})}
