@@ -1,4 +1,4 @@
-package com.example.backend;
+package com.example.backend.models;
 
 public class ItemNotFoundException extends RuntimeException {
     public ItemNotFoundException(int id) {
