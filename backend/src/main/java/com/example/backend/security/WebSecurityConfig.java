@@ -22,7 +22,8 @@ public class WebSecurityConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http
+        http
+                .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers(HttpMethod.GET, "/store", "/health-check", "/item/**", "/images/**")
@@ -36,8 +37,9 @@ public class WebSecurityConfig {
                         .requestMatchers(HttpMethod.DELETE, "/item/**")
                         .hasRole("ADMIN")
                         .anyRequest().authenticated())
-                .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
-                .build();
+                .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
+
+        return http.build();
     }
 
     @Bean
