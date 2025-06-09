@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ItemNotFoundAdvice {
     @ExceptionHandler(ItemNotFoundException.class)
     @ResponseStatus(HttpStatus.OK)
-    ErrorPayload itemNotFoundHandler(ItemNotFoundException ex) {
-        return new ErrorPayload(ex.getMessage());
+    ErrorPayload itemNotFoundHandler(ItemNotFoundException exception) {
+        return new ErrorPayload(exception.getMessage());
     }
 }
