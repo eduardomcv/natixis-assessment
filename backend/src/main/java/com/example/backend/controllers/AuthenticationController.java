@@ -11,16 +11,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.backend.models.AuthenticationDTO;
-import com.example.backend.models.ErrorPayload;
+import com.example.backend.models.ErrorDTO;
+import com.example.backend.models.LoginResponseDTO;
 import com.example.backend.models.User;
 import com.example.backend.services.AuthenticationService;
+import com.example.backend.services.TokenService;
 
 @RestController
 public class AuthenticationController {
-    private final AuthenticationService authenticationService;
+    @Autowired
+    private AuthenticationService authenticationService;
 
     @Autowired
     private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private TokenService tokenService;
 
     public AuthenticationController() {
         this.authenticationService = new AuthenticationService();
@@ -28,12 +34,15 @@ public class AuthenticationController {
 
     @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody @Validated AuthenticationDTO data) {
-        var token = new UsernamePasswordAuthenticationToken(data.username(),
+        var auth = new UsernamePasswordAuthenticationToken(data.username(),
                 data.password());
 
-        this.authenticationManager.authenticate(token);
+        this.authenticationManager.authenticate(auth);
 
-        return ResponseEntity.ok().build();
+        var token = tokenService.generateToken((User) auth.getPrincipal());
+
+        var response = new LoginResponseDTO(token);
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/register")
@@ -41,7 +50,7 @@ public class AuthenticationController {
         String username = data.username();
 
         if (this.authenticationService.userExists(username)) {
-            ErrorPayload payload = new ErrorPayload("User already exists");
+            ErrorDTO payload = new ErrorDTO("User already exists");
 
             return ResponseEntity.badRequest().body(payload);
         }

@@ -6,10 +6,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import com.example.backend.models.User;
 import com.example.backend.models.UserRole;
 
+@Service
 public class AuthenticationService implements UserDetailsService {
     private final HashMap<String, User> users;
 
