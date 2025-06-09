@@ -33,7 +33,7 @@ public class StoreController {
         return this.service.getStore();
     }
 
-    @PostMapping("/item")
+    @PostMapping("/create-item")
     public Item createItem(@RequestBody @Validated Item item) {
         return this.service.createItem(item);
     }
