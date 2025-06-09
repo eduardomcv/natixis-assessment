@@ -43,12 +43,12 @@ public class StoreController {
         return this.service.getItem(id);
     }
 
-    @PutMapping("item/{id}")
+    @PutMapping("/item/{id}")
     public Item updateItem(@PathVariable int id, @RequestBody @Validated Item item) {
         return this.service.updateItem(id, item);
     }
 
-    @DeleteMapping("item/{id}")
+    @DeleteMapping("/item/{id}")
     public Item deleteItem(@PathVariable int id) {
         return this.service.deleteItem(id);
     }

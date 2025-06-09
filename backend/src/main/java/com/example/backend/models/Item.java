@@ -47,6 +47,7 @@ public class Item {
         }
 
         return ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/images/")
                 .path(imageName)
                 .toUriString();
     }
