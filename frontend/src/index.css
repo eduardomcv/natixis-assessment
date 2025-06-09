@@ -16,8 +16,6 @@
 #root {
 	max-width: 1280px;
 	margin: 0 auto;
-	padding: 2rem;
-	text-align: center;
 }
 
 a {
@@ -28,13 +26,11 @@ a {
 body {
 	margin: 0;
 	display: flex;
-	place-items: center;
 	min-width: 320px;
-	min-height: 100vh;
 }
 
 h1 {
-	font-size: 3.2em;
+	font-size: 3rem;
 	line-height: 1.1;
 }
 
