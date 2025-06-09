@@ -1,22 +1,13 @@
 import { useEffect } from "react";
 import { useFetch } from "../../hooks/useFetch";
-import classes from "./Store.module.css";
 import { Link } from "react-router";
 import { urls } from "../../config";
+import type { Store } from "../../types";
 
-export type ID = string;
-
-export interface Item {
-	name: string;
-	price: string;
-	currency: string;
-	imageURL: string | null;
-}
-
-export type Store = Record<ID, Item>;
+import classes from "./Store.module.css";
 
 export function Store() {
-	const [runFetch, { data, loading, error, idle }] = useFetch<Store>({
+	const [runFetch, { data, error }] = useFetch<Store>({
 		url: urls.api.store(),
 	});
 
@@ -24,14 +15,24 @@ export function Store() {
 		runFetch();
 	}, [runFetch]);
 
-	if (idle || loading) {
-		// in this component, we are running the fetch when the component mounts
-		// so it will only be idle on the initial render
-		return <p>Loading...</p>;
-	}
-
 	if (error) {
 		return <p>Error: {error.message}</p>;
+	}
+
+	if (!data) {
+		return (
+			<ul className={classes.grid}>
+				{Array.from({ length: 6 })
+					.fill(0)
+					.map((_, index) => (
+						<li key={index} className={classes.item}>
+							<div className={classes.itemImage} />
+							<div className={classes.itemName} />
+							<div className={classes.itemPrice} />
+						</li>
+					))}
+			</ul>
+		);
 	}
 
 	return (

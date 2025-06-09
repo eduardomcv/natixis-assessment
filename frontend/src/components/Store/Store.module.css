@@ -4,6 +4,7 @@
 	grid-auto-rows: minmax(200px, auto);
 	border: 2px solid grey;
 	border-radius: 5px;
+	min-width: 600px;
 }
 
 .item {
@@ -16,7 +17,7 @@
 
 .itemImage {
 	aspect-ratio: 1;
-	max-width: 100px;
+	width: 100px;
 	border-radius: 5px;
 }
 
