@@ -25,31 +25,31 @@ public class StoreController {
 
     @GetMapping("/health-check")
     public String getHealthCheck() {
-        return service.getHealthCheck();
+        return this.service.getHealthCheck();
     }
 
     @GetMapping("/store")
     public HashMap<Integer, Item> getService() {
-        return service.getStore();
+        return this.service.getStore();
     }
 
     @PostMapping("/item")
     public Item createItem(@RequestBody @Validated Item item) {
-        return service.createItem(item);
+        return this.service.createItem(item);
     }
 
     @GetMapping("/item/{id}")
     public Item getItem(@PathVariable int id) {
-        return service.getItem(id);
+        return this.service.getItem(id);
     }
 
     @PutMapping("item/{id}")
     public Item updateItem(@PathVariable int id, @RequestBody @Validated Item item) {
-        return service.updateItem(id, item);
+        return this.service.updateItem(id, item);
     }
 
     @DeleteMapping("item/{id}")
     public Item deleteItem(@PathVariable int id) {
-        return service.deleteItem(id);
+        return this.service.deleteItem(id);
     }
 }
