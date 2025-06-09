@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useFetch } from "../../hooks/useFetch";
 import classes from "./Store.module.css";
 import { Link } from "react-router";
+import { urls } from "../../config";
 
 export type ID = string;
 
@@ -16,7 +17,7 @@ export type Store = Record<ID, Item>;
 
 export function Store() {
 	const [runFetch, { data, loading, error, idle }] = useFetch<Store>({
-		url: "http://localhost:8080/store",
+		url: urls.api.store(),
 	});
 
 	useEffect(() => {
