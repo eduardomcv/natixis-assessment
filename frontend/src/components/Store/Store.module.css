@@ -1,4 +1,4 @@
-.itemList {
+.grid {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-auto-rows: minmax(200px, auto);
@@ -9,6 +9,32 @@
 .item {
 	border: 2px solid grey;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	cursor: pointer;
+}
+
+.itemImage {
+	aspect-ratio: 1;
+	max-width: 100px;
+	border-radius: 5px;
+}
+
+.itemName {
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.priceInteger {
+	font-size: 1.2rem;
+	vertical-align: top;
+}
+
+.priceCurrency {
+	font-size: 0.9rem;
+}
+
+.priceFraction {
+	font-size: 0.9rem;
 }
